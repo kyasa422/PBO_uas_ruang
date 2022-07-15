@@ -1,4 +1,3 @@
-import java.io.Console;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,17 +15,17 @@ public class Runner {
 
         private ArrayList<Integer> _room = new ArrayList<Integer>();
         private ArrayList<String[]> _customer = new ArrayList<String[]>();
-
+        // Constructor
         public Runner(){
             run();
         }
-
+            // digunakan untuk membersihkan console
         private void clear_console(){
             System.out.print("\033[H\033[2J");
             System.out.flush();
         }
 
-//                di gunakan untuk menghitung mundur waktu setelah room di pesan dan room akan otomatis bila sudah selesai
+//                di gunakan untuk mengecek dab menghapus cutomer dari variable customer dan room
         private void check_customer_end_time(String redirect){
             Boolean end_time = false;
             for(int i = 0; i < _customer.size(); i++){
@@ -83,12 +82,13 @@ public class Runner {
 
         private void login(){
             clear_console();
-            Console console = System.console();
-
-            System.out.print("Enter your username : ");
+            System.out.println("             Room Management System Karaoke");
+            System.out.println("|-----------------------------------------------------|");
+            System.out.println("\n                         LOGIN        ");
+            System.out.print("         Enter your username : ");
             String username = scanner.nextLine();
 
-            System.out.print("Enter your password : ");
+            System.out.print("         Enter your password : ");
             String password = scanner.nextLine();
 //            char[] passwordArray = console.readPassword();
 //            String password = new String(passwordArray);
@@ -108,6 +108,8 @@ public class Runner {
         private void home(){
             check_customer_end_time("home");
             clear_console();
+            System.out.println("            MENU DASHBOARD KARAOKE");
+            System.out.println("|-----------------------------------------------------|");
             String[] menu = {"Room", "Customer", "Booking", "Logout"};
             int choice = 0;
 
@@ -160,10 +162,13 @@ public class Runner {
             if(!_room.contains(choice)){
                 clear_console();
                 System.out.println("Room " + choice + " is available");
-                System.out.print("Enter your name : ");
+                System.out.print("Enter Your Name : ");
+             
                 String name = scanner.nextLine();
+                System.out.print("Enter Your Number");
+                String nohp = scanner.nextLine();
 
-                _customer.add(new String[]{name, format.format(date), format.format(new Date(date.getTime() + (1 * 60 * 60 * 1000))), String.valueOf(choice)});
+                _customer.add(new String[]{name, format.format(date), format.format(new Date(date.getTime() + (1 * 60 * 60 * 1000))), String.valueOf(choice), nohp});
                 _room.add(choice);
 
                 System.out.println("Has been booked " + name + " for room " + choice + " from " + format.format(date) + " to " + format.format(new Date(date.getTime() + (1 * 60 * 60 * 1000))));
@@ -195,6 +200,7 @@ public class Runner {
                 }else{
                     clear_console();
                     System.out.println("Name : " + _customer.get(choice - 1)[0]);
+                    System.out.println("No. HP : " + _customer.get(choice - 1)[4]);
                     System.out.println("Room : " + _room.get(choice - 1));
                     System.out.println("Check in : " + _customer.get(choice - 1)[1]);
                     System.out.println("Check out : " + _customer.get(choice - 1)[2]);
@@ -217,8 +223,8 @@ public class Runner {
 
             room._room = _room;
             room.roomList();
-            System.out.println("0. Back");
-            System.out.print("Enter your choice : ");
+            System.out.println("        0. Back");
+            System.out.print("      Enter your choice : ");
 
             int choice = Integer.parseInt(scanner.nextLine());
             if(choice == 0){
@@ -231,6 +237,7 @@ public class Runner {
                 room();
             }
         }
-}
+} 
+
 
 
