@@ -6,11 +6,15 @@ public class Room {
     public ArrayList<Integer> _room = new ArrayList<>();
 
     public void roomList(){
+        System.out.println("                Room List"                 );
+        System.out.println( "              -----------"                 );
         for(int i = 0; i < 12; i++){
-            if(!_room.contains(i + 1)){
-                System.out.println((i + 1) + ". Room " + (i + 1) + " is available");
+            if((i + 1) > 6 && (i + 1) < 9){
+                System.out.println("        "+(i + 1) + ". Room " + (i + 1) + " Is Maintenance");
+            }else if(!_room.contains(i + 1)){
+                System.out.println("        "+(i + 1) + ". Room " + (i + 1) + " is not available");
             }else{
-                System.out.println((i + 1) + ". Room " + (i + 1) + " is not available");
+                System.out.println("        "+(i + 1) + ". Room " + (i + 1) + " is not available");
             }
         }
     }
@@ -29,7 +33,7 @@ public class Room {
         } else if (choice >6 && choice <9) {
             System.out.println("");
             System.out.println(" This room is under maintenance ");
-            System.out.println(" ");
+            System.out.println(" ");    
         } else{
             System.out.println("Price : Rp. 400.000,00 per hour");
             System.out.println("Capacity : 12 person");
