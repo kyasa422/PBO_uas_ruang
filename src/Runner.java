@@ -25,6 +25,7 @@ public class Runner {
             System.out.flush();
         }
 
+
 //                di gunakan untuk mengecek dab menghapus cutomer dari variable customer dan room
         private void check_customer_end_time(String redirect){
             Boolean end_time = false;
@@ -183,6 +184,22 @@ public class Runner {
             }
         }
 
+    private void remove_customer(){
+        System.out.print("hapus Customer no : ");
+        int hapus = Integer.parseInt(scanner.nextLine());
+        for(int i = 0; i < _customer.toArray().length; i++) {
+
+            if (_customer.get(i).equals(hapus) ) {
+                _customer.remove(i);
+                customer();
+
+            }
+        }
+    }
+
+
+
+
         private void customer() {
             check_customer_end_time("customer");
             clear_console();
@@ -192,12 +209,16 @@ public class Runner {
                 }
 
                 System.out.println("0. Back");
+                System.out.println("1000 untuk hapus");
                 System.out.print("Enter your choice : ");
                 int choice = Integer.parseInt(scanner.nextLine());
 
                 if(choice == 0){
                     home();
-                }else{
+                } else if (choice == 1000) {
+                    remove_customer();
+
+                } else{
                     clear_console();
                     System.out.println("Name : " + _customer.get(choice - 1)[0]);
                     System.out.println("No. HP : " + _customer.get(choice - 1)[4]);
