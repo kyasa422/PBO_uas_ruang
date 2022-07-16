@@ -152,7 +152,7 @@ public class Runner {
                 System.out.println("");
             }
 
-            System.out.println("0. Back");
+            System.out.println("0. For Back");
             System.out.print("Enter your choice : ");
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -162,12 +162,14 @@ public class Runner {
 
             if(!_room.contains(choice)){
                 clear_console();
+                System.out.println("------------------------------------------\n");
                 System.out.println("Room " + choice + " is available");
                 System.out.print("Enter Your Name : ");
              
                 String name = scanner.nextLine();
-                System.out.print("Enter Your Number");
+                System.out.print("Enter Your NumberPhone : ");
                 String nohp = scanner.nextLine();
+                System.out.println("------------------------------------------\n");
 
                 _customer.add(new String[]{name, format.format(date), format.format(new Date(date.getTime() + (1 * 60 * 60 * 1000))), String.valueOf(choice), nohp});
                 _room.add(choice);
@@ -184,15 +186,17 @@ public class Runner {
             }
         }
 
+
+            // Digunakan untuk menghapus CS
     private void remove_customer(){
         check_customer_end_time("customer");
         clear_console();
-        System.out.println("            MENU CUSTOMER");
+        System.out.println("                    MENU DELETE CUSTOMER");
         System.out.println("|-----------------------------------------------------|");
         for(int i = 0; i < _customer.size(); i++){
             System.out.println(i + 1 + ". " + _customer.get(i)[0] + " - " + _customer.get(i)[1] + " - " + _customer.get(i)[2]);
         }
-        System.out.println("0. Back");
+        System.out.println("0. For Back");
         System.out.print("Enter your choice : ");
         int choice = Integer.parseInt(scanner.nextLine());
         if(choice == 0){
@@ -211,7 +215,7 @@ public class Runner {
 
 
 
-
+        // Menu CS digunakan untuk melihat data CS yang telah memesan ROOM
         private void customer() {
             check_customer_end_time("customer");
             clear_console();
@@ -220,23 +224,26 @@ public class Runner {
                     System.out.println((i + 1) + ". " + _customer.get(i)[0]);
                 }
 
-                System.out.println("0. Back");
-                System.out.println("1000 untuk hapus");
+                System.out.println("0. For Back");
+                System.out.println("99. For Delete");
                 System.out.print("Enter your choice : ");
                 int choice = Integer.parseInt(scanner.nextLine());
 
                 if(choice == 0){
                     home();
-                } else if (choice == 1000) {
+                } else if (choice == 99) {
                     remove_customer();
 
                 } else{
                     clear_console();
+                    System.out.println("            Data Customer " );
+                    System.out.println("----------------------------------------");
                     System.out.println("Name : " + _customer.get(choice - 1)[0]);
                     System.out.println("No. HP : " + _customer.get(choice - 1)[4]);
                     System.out.println("Room : " + _room.get(choice - 1));
                     System.out.println("Check in : " + _customer.get(choice - 1)[1]);
                     System.out.println("Check out : " + _customer.get(choice - 1)[2]);
+                    System.out.println("-----------------------------------------");
                     System.out.println("Enter to continue...");
                     scanner.nextLine();
                     customer();
@@ -256,7 +263,7 @@ public class Runner {
 
             room._room = _room;
             room.roomList();
-            System.out.println("        0. Back");
+            System.out.println("        0. For Back");
             System.out.print("      Enter your choice : ");
 
             int choice = Integer.parseInt(scanner.nextLine());
