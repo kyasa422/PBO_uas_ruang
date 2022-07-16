@@ -12,7 +12,7 @@ public class Room {
             if((i + 1) > 6 && (i + 1) < 9){
                 System.out.println("        "+(i + 1) + ". Room " + (i + 1) + " Is Maintenance");
             }else if(!_room.contains(i + 1)){
-                System.out.println("        "+(i + 1) + ". Room " + (i + 1) + " is not available");
+                System.out.println("        "+(i + 1) + ". Room " + (i + 1) + " is available");
             }else{
                 System.out.println("        "+(i + 1) + ". Room " + (i + 1) + " is not available");
             }

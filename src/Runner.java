@@ -185,15 +185,27 @@ public class Runner {
         }
 
     private void remove_customer(){
-        System.out.print("hapus Customer no : ");
-        int hapus = Integer.parseInt(scanner.nextLine());
-        for(int i = 0; i < _customer.toArray().length; i++) {
-
-            if (_customer.get(i).equals(hapus) ) {
-                _customer.remove(i);
-                customer();
-
-            }
+        check_customer_end_time("customer");
+        clear_console();
+        System.out.println("            MENU CUSTOMER");
+        System.out.println("|-----------------------------------------------------|");
+        for(int i = 0; i < _customer.size(); i++){
+            System.out.println(i + 1 + ". " + _customer.get(i)[0] + " - " + _customer.get(i)[1] + " - " + _customer.get(i)[2]);
+        }
+        System.out.println("0. Back");
+        System.out.print("Enter your choice : ");
+        int choice = Integer.parseInt(scanner.nextLine());
+        if(choice == 0){
+            home();
+        }
+        if(choice > _customer.size()){
+            remove_customer();
+        }else{
+            _customer.remove(choice - 1);
+            System.out.println("Customer has been removed");
+            System.out.println("Enter to continue...");
+            scanner.nextLine();
+            customer();
         }
     }
 
